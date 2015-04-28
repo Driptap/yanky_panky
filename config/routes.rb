@@ -15,9 +15,15 @@ Rails.application.routes.draw do
   #   resources :products
   
   resources :users do
-    get 'get_started'
+   # get 'get_started'
+    get 'dash'
+   # get 'dropbox_callback'
   end
   
+  post "login_or_signup", to: "users#login_or_signup"
+
+  get "dropbox_callback", to: "users#dropbox_callback"
+  #get "dropbox_callback", to: "user"
   # Example resource route with options:
   #   resources :products do
   #     member do

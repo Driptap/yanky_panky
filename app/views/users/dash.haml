@@ -1,0 +1,8 @@
+%h1
+  Hi #{@user.name}
+%h2
+  How're you?
+%ul
+  - @tracks.each do |t|
+    %li  
+      = t
