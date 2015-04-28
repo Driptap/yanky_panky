@@ -15,33 +15,35 @@ end
 # users page
 def dash
 	@user = User.find(params[:user_id])
- 	
  	update_tracks(@user)
-
-
+ 	@track = get_track(@user)
+ 	session[:user] = @user.id
+end
+def new_track
+	@user = User.find(session[:user])
+  render plain: get_track(@user)["url"] 
 end
 
 private
 	
-	
-	def update_tracks(@user)
-		dir_to_search = Array.new
-		client = DropboxClient.new(@user.auth_token)
+	def get_track(user)
+ 		client = DropboxClient.new(user.auth_token)
+ 		return client.media(user.tracks.order("RANDOM()").first.file_name)
+	end
 
-		client.metadata("/Music").contents.each do |f|
- 		if f.is_dir?
- 			dir_to_search << f.path
- 		elsif f.path.split(//).last(3).join == "mp3"
- 			Track.new(file_name: f.path, user: @user)
-
-
+	def update_tracks(user)
+		client = DropboxClient.new(user.auth_token)
+		db_tracks = client.metadata("/Music/Blues")["contents"]
+		if db_tracks.length != @user.tracks.all.length
+			db_tracks.each do |f|
+				if f["path"].split(//).last(3).join == "mp3"
+					Track.create(file_name: f["path"], user: user)
+				end
+		 	end
+		end
 	end
 
 	def get_web_auth()
 		return DropboxOAuth2Flow.new(APP_KEY, APP_SECRET, dropbox_callback_url, session, :dropbox_auth_csrf_token)
 	end
-
-
-
-
 end

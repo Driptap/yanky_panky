@@ -1,0 +1,11 @@
+$('audio').bind('ended', function(){
+	change();
+});
+
+function change(){ 	
+	$.ajax({
+	  url: "/users/1/new_track"
+	}).done(function(url) {
+	  return $('audio > source').attr("src", url);
+	});
+}

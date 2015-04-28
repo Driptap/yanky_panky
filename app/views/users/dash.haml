@@ -1,7 +1,9 @@
 
 %h2
   How're you?
-%ul
-  - @tracks.each do |t|
-    %li  
-      = t
+
+%div
+  %audio{preload: "auto", controls: true, autoplay: true} 
+    %source{src: "#{@track['url']}"}
+  %p
+    = @track
