@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  file_name: MyString
+  play_count: 
+  skip_count: 
+  name: MyString
+  artist: MyString
+  album: MyString
+
+two:
+  file_name: MyString
+  play_count: 
+  skip_count: 
+  name: MyString
+  artist: MyString
+  album: MyString
