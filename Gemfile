@@ -18,7 +18,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 
 gem 'better_errors'
-gem "binding_of_caller"
+gem 'binding_of_caller'
+
+#gem 'ruby-echonest'
+
 gem 'dropbox-sdk'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

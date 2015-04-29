@@ -1,21 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>YankyPanky</title>
-        <link rel="stylesheet" href="css/style.css">
-        <!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-		<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+
 		<script>
-			$(document).ready(function(){
-	    		$("#cord").click(function(){
-	       			$(this).toggleClass('yanked');
-			    });
-			});
 </script>
 		<link href='http://fonts.googleapis.com/css?family=PT+Mono|Open+Sans:700' rel='stylesheet' type='text/css'>
-    </head>
     <body>
 	    <div class="row">
 	    	<section id="info", class="col-md-2 col-xs-12">
@@ -26,7 +12,9 @@
 	                </hgroup>
 	            </header>
 	        </section>
-
+	        <audio id="audio" preload="auto" controls autoplay="true">
+	        <source src="<%= @track %>"></source> 
+	        </audio>
 
 	    	<section id="break", class="col-md-2">
 	        </section>
@@ -2004,4 +1992,4 @@
 	            </article>
 	        </section>
 
-	    </div>
+	    

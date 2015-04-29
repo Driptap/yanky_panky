@@ -7,4 +7,10 @@ function change(){
 	  });
 }
 
+$(document).ready(function(){
+	$("#cord").click(function(){
+		$(this).toggleClass('yanked');
+		change();
+    });
+});
 //document.getElementById('audio').addEventListener("ended", change());

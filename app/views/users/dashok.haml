@@ -4,7 +4,7 @@
 
 %div
   %audio#audio{preload: "auto", controls: true, autoplay: true} 
-    %source{src: "#{@track['url']}"}
+    %source{src: "#{@track}"}
   %p
     = @user.tracks.sort_by { |p| [-p.play_count, p.file_name] }
   = link_to(user_skip_track_path)
