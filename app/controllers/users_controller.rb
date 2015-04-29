@@ -20,15 +20,29 @@ def dash
  	session[:user] = @user.id
 end
 def new_track
-	@user = User.find(session[:user])
+	@user = User.find(session[:user]) 
   render plain: get_track(@user)["url"] 
 end
 
+def skip_track
+	@user = User.find(session[:user])
+	track = Track.find(session{:track})
+	# needs to be default value
+	track.skip_count = ( track.skip_count || 0 ) + 1 
+	track.save
+	new_track
+end
 private
 	
 	def get_track(user)
  		client = DropboxClient.new(user.auth_token)
- 		return client.media(user.tracks.order("RANDOM()").first.file_name)
+ 		track = user.tracks.order("RANDOM()").first
+		session[:now_playing] = track.id
+		t = Track.find(session[:now_playing])
+		#This is bodged, needs to be a default value
+		t.play_count = (t.play_count || 0) + 1
+		t.save
+		return client.media(track.file_name)
 	end
 
 	def update_tracks(user)

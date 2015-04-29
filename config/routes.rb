@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get 'dash'
    # get 'dropbox_callback'
     get 'new_track'
+    get 'skip_track'
   end
     
   post "login_or_signup", to: "users#login_or_signup"
