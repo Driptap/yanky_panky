@@ -26,34 +26,32 @@ end
 
 def skip_track
 	@user = User.find(session[:user])
-	track = Track.find(session{:track})
-	# needs to be default value
-	track.skip_count = ( track.skip_count || 0 ) + 1 
-	track.save
+	Track.find(session{:track}).is_being_skipped!
 	new_track
 end
+
 private
 	
 	def get_track(user)
  		client = DropboxClient.new(user.auth_token)
- 		track = user.tracks.order("RANDOM()").first
+
+
+ 		track = tracks.order("RANDOM()").first
 		session[:now_playing] = track.id
-		t = Track.find(session[:now_playing])
-		#This is bodged, needs to be a default value
-		t.play_count = (t.play_count || 0) + 1
-		t.save
+		Track.find(session[:now_playing]).is_being_played!
 		return client.media(track.file_name)
 	end
 
 	def update_tracks(user)
 		client = DropboxClient.new(user.auth_token)
-		db_tracks = client.metadata("/Music/Blues")["contents"]
-		if db_tracks.length != @user.tracks.all.length
+		if user.track_rev != client.metadata("/Music/Blues")["rev"] 	
+			db_tracks = client.metadata("/Music/Blues")["contents"]
 			db_tracks.each do |f|
 				if f["path"].split(//).last(3).join == "mp3"
 					Track.create(file_name: f["path"], user: user)
 				end
 		 	end
+		 	user.update_attributes(track_rev: client.metadata("/Music/Blues")["rev"])	
 		end
 	end
 
