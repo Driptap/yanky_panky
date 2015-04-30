@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150429005836) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "tracks", force: true do |t|
     t.string   "file_name"
     t.integer  "play_count", default: 0
