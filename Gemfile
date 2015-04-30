@@ -5,9 +5,12 @@ gem 'rails', '4.1.8'
 #gem 'sqlite3'
 # User pg database
 gem 'pg', '~> 0.18.0.pre20141117110243'
-gem 'haml'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
+group :assets do
+  #gem 'therubyracer'
+  gem 'sass'
+  gem 'haml'
+  gem 'uglifier'
+end
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
