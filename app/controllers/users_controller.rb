@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- before_action :connected_to_dropbox_as_client?
+ before_action :connected_to_dropbox_as_client?, except: %i[login_or_signup dropbox_callback ]
 # check for user
 def login_or_signup
   auth_url = get_web_auth.start()		

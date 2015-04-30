@@ -71,7 +71,7 @@ body {
   	top: -11px;
 }
 
-#cord {
+.cord {
   display: block;
   position: relative;
 
@@ -83,7 +83,7 @@ body {
   top: 0px;
   left: 47.5%;
 }
-#cord > div {
+.cord > div {
   content: "";
   display: block;
   width: 30px;

@@ -13,4 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require id3_reader.js
+
+$(document).ready(function(){
+	$("#welcomeCord").click(function(){
+		$(this).toggleClass('yanked');
+    });
+});

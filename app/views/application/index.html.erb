@@ -7,7 +7,7 @@
 	                    <h1>YankyPanky</h1>
 	                    <h2>A Dropbox MP3 Player</h2>
 	                    <marquee>
-	                    	<h2></h2>
+	                    	<h2>Pull the chord to get started</h2>
 	                    </marquee>
 	                </hgroup>
 	            </header>
@@ -16,9 +16,6 @@
 	        </section>
 
 	        <section id="playerPlayer", class="col-md-4 col-xs-12">
-				<audio id="audio" preload="auto" controls autoplay="true">
-	        		<source src=" "></source> 
-	        	</audio>
 				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="252.534 355.482 517.669 261.517"
 					 enable-background="new 252.534 355.482 517.669 261.517" xml:space="preserve">
 				<g>
@@ -1863,9 +1860,8 @@
 	        <section id="break", class="col-md-4">
 	        </section>
 
-	        <div id="pullCord", class="col-md-4 col-xs-12">
-		        <button id="cord", class="cord">
-		  
+	        <div id="pullCord" class="col-md-4 col-xs-12">
+		  		<%= link_to login_or_signup_path, id: "welcomeCord", class: "cord" do %>
 					  <div id="main_cord">
 					    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 					   viewBox="0 0 30 380" enable-background="new 0 0 30 380" xml:space="preserve">
@@ -1972,7 +1968,7 @@
 
 					  </div>
 					  
-				</button>
+				<% end %>
 		    </div>
 
 		    <!-- un-needed buttons
