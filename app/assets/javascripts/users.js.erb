@@ -1,16 +1,25 @@
-function change(){ 	
+function getTrack(){ 	
+	$('marquee > h2').text("loading track.. " );
 	$.ajax({
 	  url: "/users/1/new_track"
 	}).done(function(url) {
 	  $('audio > source').attr("src", url);
 	  $('audio').load();
-	  });
+	  $('marquee > h2').text("identifying.. ");
+	  identify_track(url);
+	});
 }
-
+function identify_track(url) {
+	ID3.loadTags(url, function() {
+		var tags = ID3.getAllTags(url);
+		$('marquee > h2').text("Now playing: " + tags.artist + " - " + tags.title );
+	});
+}
 $(document).ready(function(){
+	getTrack();
 	$("#cord").click(function(){
 		$(this).toggleClass('yanked');
-		change();
+		getTrack();
     });
 });
 //document.getElementById('audio').addEventListener("ended", change());

@@ -19,12 +19,11 @@ end
 def dash
 	@user = User.find(params[:user_id])
  	check_for_new_tracks(@user)
- 	@track = get_track(@user)
 end
 # returns a new track
 def new_track
 	@user = User.find(session[:user]) 
-  render plain: get_track(@user)["url"] 
+  render plain: get_track(@user) 
 end
 # skips track and returns new track
 def skip_track

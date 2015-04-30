@@ -3,7 +3,14 @@ html, body {
     background: #f2f2f2 !important;
 }
 
-
+/* Now Playing */
+marquee {
+  margin: 0 0 -20px 0;
+}
+/* Hides the audio controls */
+audio {
+  display: none;
+}
 #controls {
 	background-color: #ffffff;
 	padding-top: 15px; 

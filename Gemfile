@@ -21,7 +21,7 @@ gem 'better_errors'
 gem 'binding_of_caller'
 
 #gem 'ruby-echonest'
-
+gem 'echowrap'
 gem 'dropbox-sdk'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
