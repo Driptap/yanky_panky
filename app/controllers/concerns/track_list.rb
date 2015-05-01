@@ -1,10 +1,8 @@
 module TrackList
   extend ActiveSupport::Concern
-
   included do
     helper_method :tracks
   end
-
   # Recursively scans directories starting with the route directory above. Validations shoould be moved to model
   def scan_dir_for_tracks(path, user)
     $client.metadata(path)["contents"].each do |f|

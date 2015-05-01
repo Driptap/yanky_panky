@@ -27,6 +27,6 @@ module DropboxSessions
   end
   # Sets up Dropbox oauth2 flow object
   def get_web_auth
-    return DropboxOAuth2Flow.new('x8k7o2xskm0kw7u', '7brk3tucfkkltvp', dropbox_callback_url, session, :dropbox_auth_csrf_token)
+    return DropboxOAuth2Flow.new(DROPBOX_APP_KEY, DROPBOX_APP_SECRET, dropbox_callback_url, session, :dropbox_auth_csrf_token)
   end
 end
