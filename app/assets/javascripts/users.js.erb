@@ -1,4 +1,3 @@
-
 function getTrack(){ 	
 	$('marquee > h2').text("loading track.. " );
 	$.ajax({
@@ -14,6 +13,12 @@ function identify_track(url) {
 	ID3.loadTags(url, function() {
 		var tags = ID3.getAllTags(url);
 		$('marquee > h2').text("Now playing: " + tags.artist + " - " + tags.title );
+		(function titleScroller(text) {
+		    document.title = text;
+		    setTimeout(function () {
+		        titleScroller(text.substr(1) + text.substr(0, 1));
+			}, 300);
+		}("Now playing: " + tags.artist + " - " + tags.title + " -- Yanky Panky - The Dropbox MP3 Player "));	
 	});
 }
 $(document).ready(function(){
