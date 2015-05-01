@@ -31,7 +31,14 @@ def skip_track
 	Track.find(session[:now_playing]).is_being_skipped!
 	new_track
 end
-
+# stores id3 data
+def store_track_info
+  if track = Track.find_by_id(session[:now_playing]).update_attributes(title: params[:track_title], artist: params[:track_artist], album: params[:track_album])
+    render plain: "track info stored"
+  else
+    render plain: "track info not stored"
+  end
+end
 private
   def connected_to_dropbox_as_client?
     connect_client if $client.blank?

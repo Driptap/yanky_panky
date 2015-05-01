@@ -6,10 +6,10 @@ function getTrack(){
 	  $('audio > source').attr("src", url);
 	  $('audio').load();
 	  $('marquee > h2').text("identifying.. ");
-	  identify_track(url);
+	  identifyTrack(url);
 	});
 }
-function identify_track(url) {
+function identifyTrack(url) {
 	ID3.loadTags(url, function() {
 		var tags = ID3.getAllTags(url);
 		$('marquee > h2').text("Now playing: " + tags.artist + " - " + tags.title );
@@ -19,6 +19,13 @@ function identify_track(url) {
 		        titleScroller(text.substr(1) + text.substr(0, 1));
 			}, 300);
 		}("Now playing: " + tags.artist + " - " + tags.title + " -- Yanky Panky - The Dropbox MP3 Player "));	
+		storeTrackInfo(tags);
+	});
+}
+function storeTrackInfo(tags) {
+	$.post('/users/1/store_track_info', { track_title: tags.title, track_album: tags.album, track_artist: tags.artist}, 
+    function(returnedData){
+         console.log(returnedData);
 	});
 }
 $(document).ready(function(){

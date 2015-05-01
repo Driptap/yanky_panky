@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429005836) do
+ActiveRecord::Schema.define(version: 20150501095450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150429005836) do
     t.string   "file_name"
     t.integer  "play_count", default: 0
     t.integer  "skip_count", default: 0
-    t.string   "name"
+    t.string   "title"
     t.string   "artist"
     t.string   "album"
     t.datetime "created_at"
