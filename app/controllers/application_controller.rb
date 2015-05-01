@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  include TrackList
+  include DropboxSessions
   require 'dropbox_sdk'
   APP_KEY = 'x8k7o2xskm0kw7u'
   APP_SECRET = '7brk3tucfkkltvp'
