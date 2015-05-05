@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   require 'dropbox_sdk'
 	# Shows the home page
 	def index
+		# Logs user in if session cookie is present
 		if @user = User.find_by_id(session[:user]) 
 			redirect_to user_dash_path(@user) 
 		end

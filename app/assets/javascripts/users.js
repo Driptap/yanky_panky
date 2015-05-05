@@ -1,7 +1,7 @@
-function getTrack(){ 	
+function getTrack(){
 	$('marquee > h2').text("loading track.. " );
 	$.ajax({
-	  url: "<%= url_for(user_new_track_path(current_user.id)) %>"
+	  url: newTrackUrl
 	}).done(function(url) {
 	  $('audio > source').attr("src", url);
 	  $('audio').load();
@@ -23,7 +23,7 @@ function identifyTrack(url) {
 	});
 }
 function storeTrackInfo(tags) {
-	$.post('/users/1/store_track_info', { track_title: tags.title, track_album: tags.album, track_artist: tags.artist}, 
+	$.post(storeTrackInfoUrl, { track_title: tags.title, track_album: tags.album, track_artist: tags.artist}, 
     function(returnedData){
          console.log(returnedData);
 	});

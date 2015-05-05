@@ -11,7 +11,9 @@ module TrackList
       elsif f["is_dir"] == false  
         if f["path"] != nil
           if f["path"].split(//).last(3).join == "mp3"
+          
             Track.create(file_name: f["path"], user: user) unless Track.find_by(file_name: f["path"], user: user) 
+          
           end
         end
       end
