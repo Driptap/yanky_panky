@@ -6,7 +6,9 @@ Uses the Dropbox sdk to scrape for MP3's and play them. Randomly plays tracks, w
 
 Made with Ruby on Rails.
 
-###### To run:
+#### To run:
+  ```
   bundle install
   rails s
+  ```
 
